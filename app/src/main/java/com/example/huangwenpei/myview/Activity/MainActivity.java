@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void initView() {
         sildemenu = findViewById(R.id.sildemenu);
         sildemenu.setOnClickListener(this);
+
     }
 
     @Override
