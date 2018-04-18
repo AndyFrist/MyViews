@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.BaseActivity" />
-        <activity android:name=".Activity.SlidemenuActivity"/>
+        <activity android:name=".Activity.SlidemenuActivity" />
+        <activity android:name=".Activity.ChartLineActivity"></activity>
     </application>
 
 </manifest>
