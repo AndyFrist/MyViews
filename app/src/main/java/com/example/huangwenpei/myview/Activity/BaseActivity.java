@@ -1,13 +1,16 @@
 package com.example.huangwenpei.myview.Activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.huangwenpei.myview.Util.SlidingActivity;
 
-public class BaseActivity extends AppCompatActivity {
+
+public class BaseActivity extends SlidingActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+
 }
