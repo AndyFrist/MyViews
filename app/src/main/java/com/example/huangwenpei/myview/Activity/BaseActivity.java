@@ -2,7 +2,7 @@ package com.example.huangwenpei.myview.Activity;
 
 import android.os.Bundle;
 
-import com.example.huangwenpei.myview.Util.SlidingActivity;
+import com.example.huangwenpei.myview.Util.sliding.SlidingActivity;
 
 
 public class BaseActivity extends SlidingActivity {

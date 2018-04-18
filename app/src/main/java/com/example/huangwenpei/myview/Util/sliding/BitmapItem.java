@@ -1,9 +1,10 @@
-package com.example.huangwenpei.myview.Util;
+package com.example.huangwenpei.myview.Util.sliding;
 
 import android.graphics.Bitmap;
 
 /**
- * Created by chenjishi on 15/10/15.
+ * Created by xuxiaopeng
+ * on 15/10/15.
  */
 public class BitmapItem {
 

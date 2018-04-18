@@ -16,6 +16,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets{
+        main{
+            //指定res路径
+            res.srcDirs = ['src/main/res',
+                           'src/main/java/com/example/huangwenpei/myview/Util/sliding/res']
+        }
+    }
 }
 
 dependencies {

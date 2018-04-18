@@ -1,4 +1,4 @@
-package com.example.huangwenpei.myview.Util;
+package com.example.huangwenpei.myview.Util.sliding;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by chenjishi on 14-3-19.
+ * Created by
+ * xuxiaopeng on 14-3-19.
  */
 public class IntentUtils {
 

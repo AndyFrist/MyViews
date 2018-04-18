@@ -1,4 +1,4 @@
-package com.example.huangwenpei.myview.Util;
+package com.example.huangwenpei.myview.Util.sliding;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -60,11 +60,16 @@ public class SlidingActivity extends FragmentActivity implements SlidingLayout.S
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        IntentUtils.getInstance().setIsDisplayed(mBitmapId, false);
+    protected void setContentView(int layoutResID, int titleResId) {
+        this.titleResId = titleResId;
+        setContentView(layoutResID);
     }
+
+    protected void setContentView(int layoutResID, boolean hideTitle) {
+        this.hideTitle = hideTitle;
+        setContentView(layoutResID);
+    }
+
 
     @Override
     public void setTitle(CharSequence title) {
@@ -90,13 +95,9 @@ public class SlidingActivity extends FragmentActivity implements SlidingLayout.S
         }
     }
 
-    protected void setContentView(int layoutResID, int titleResId) {
-        this.titleResId = titleResId;
-        setContentView(layoutResID);
-    }
-
-    protected void setContentView(int layoutResID, boolean hideTitle) {
-        this.hideTitle = hideTitle;
-        setContentView(layoutResID);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        IntentUtils.getInstance().setIsDisplayed(mBitmapId, false);
     }
 }

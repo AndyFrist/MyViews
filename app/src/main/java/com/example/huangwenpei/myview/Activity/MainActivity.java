@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.huangwenpei.myview.R;
-import com.example.huangwenpei.myview.Util.IntentUtils;
+import com.example.huangwenpei.myview.Util.sliding.IntentUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button sildemenu;

@@ -1,4 +1,4 @@
-package com.example.huangwenpei.myview.Util;
+package com.example.huangwenpei.myview.Util.sliding;
 
 import android.content.Context;
 import android.content.res.TypedArray;
