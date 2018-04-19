@@ -26,9 +26,10 @@
             android:text="折线图" />
 
         <Button
+            android:id="@+id/overscrollby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="视觉特效" />
 
         <Button
             android:layout_width="wrap_content"

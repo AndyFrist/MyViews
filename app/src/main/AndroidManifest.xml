@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".Activity.BaseActivity" />
         <activity android:name=".Activity.SlidemenuActivity" />
-        <activity android:name=".Activity.ChartLineActivity"></activity>
+        <activity android:name=".Activity.ChartLineActivity" />
+        <activity android:name=".Activity.OverScrollyActivity"></activity>
     </application>
 
 </manifest>
