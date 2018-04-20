@@ -9,6 +9,8 @@ public class ChartLineActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart_line);
+        setContentView(R.layout.activity_chart_line,R.layout.titles_layout);
+
+
     }
 }
