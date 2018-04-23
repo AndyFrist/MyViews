@@ -128,7 +128,7 @@ public class SlideMenuView extends FrameLayout {
 
     private int fixVealue(int top) {
         if (top < 0) {
-            return 0;
+            return top;
         } else if (top > range) {
             return range;
         }
