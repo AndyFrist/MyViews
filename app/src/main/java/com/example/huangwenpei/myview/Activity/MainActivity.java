@@ -10,7 +10,7 @@ import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.Util.sliding.IntentUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button sildemenu, chart, overscrollby;
+    private Button sildemenu, chart, overscrollby, scrollview_pull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         chart.setOnClickListener(this);
         overscrollby = findViewById(R.id.overscrollby);
         overscrollby.setOnClickListener(this);
+        scrollview_pull = findViewById(R.id.scrollview_pull);
+        scrollview_pull.setOnClickListener(this);
 
     }
 
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.overscrollby:
                 intent.setClass(this, OverScrollyActivity.class);
+                break;
+            case R.id.scrollview_pull:
+                intent.setClass(this, PullableScrollviewActivity.class);
                 break;
         }
         IntentUtils.getInstance().startActivity(this, intent);

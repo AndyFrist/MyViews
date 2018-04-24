@@ -1,7 +1,12 @@
 package com.example.huangwenpei.myview.View;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.ScrollView;
 
 /**
@@ -26,7 +31,7 @@ public class MyScrollView extends ScrollView implements Pullable{
     @Override
     public boolean canPullDown()
     {
-        if (getScrollY() == 0)
+        if (getScrollY() <= 0)
             return true;
         else
             return false;

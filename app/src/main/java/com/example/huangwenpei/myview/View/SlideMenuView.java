@@ -24,7 +24,7 @@ public class SlideMenuView extends FrameLayout {
     private ViewDragHelper.Callback cb;
     private ViewDragHelper viewDragHelper;
     private ViewGroup headView;
-    private ViewGroup mainView;
+    private MyScrollView mainView;
     private int range;
     private int mHeight;
     private int mWidth;
@@ -83,7 +83,7 @@ public class SlideMenuView extends FrameLayout {
                 //yvel 垂直方向的速度
                 super.onViewReleased(releasedChild, xvel, yvel);
 
-                LogUtil.d(TAG,"top" + mainView.getTop());
+                LogUtil.d(TAG, "top" + mainView.getTop());
                 if (mainView.getTop() >= headY) {
                     open();
                 } else {
@@ -128,7 +128,7 @@ public class SlideMenuView extends FrameLayout {
 
     private int fixVealue(int top) {
         if (top < 0) {
-            return top;
+            return 0;
         } else if (top > range) {
             return range;
         }
@@ -145,7 +145,7 @@ public class SlideMenuView extends FrameLayout {
             throw new IllegalStateException("两个孩子view不是容器");
         }
         headView = (ViewGroup) getChildAt(0);
-        mainView = (ViewGroup) getChildAt(1);
+        mainView = (MyScrollView) getChildAt(1);
 
         LogUtil.d(TAG, "onMeasure");
     }
@@ -154,18 +154,53 @@ public class SlideMenuView extends FrameLayout {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         LogUtil.d(TAG, "onLayout");
-        mWidth = getMeasuredWidth();
-        mHeight = getMeasuredHeight();
-        range = (int) (0.6 * mHeight);
-        headView.layout(0, -mHeight, mWidth, 0);
-        mainView.layout(0, 0, mWidth, mHeight);
+        if (init) {
+            mWidth = getMeasuredWidth();
+            mHeight = getMeasuredHeight();
+            range = (int) (0.6 * mHeight);
+            headView.layout(0, -mHeight, mWidth, 0);
+            mainView.layout(0, 0, mWidth, mHeight);
+            init = false;
+        }else{
+            LogUtil.d(TAG,"offsetY" + offsetY);
+            headView.layout(0, -mHeight + offsetY , mWidth, 0 + offsetY);
+            mainView.layout(0, 0 + offsetY, mWidth, mHeight + offsetY);
+        }
     }
+
+    int downY;
+    int offsetY = 0;
+    boolean init = true;
+
 
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return viewDragHelper.shouldInterceptTouchEvent(ev);
+        viewDragHelper.shouldInterceptTouchEvent(ev);
+
+
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                downY = (int) ev.getY();
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (!mainView.canPullDown()) {
+                    return false;
+                }
+
+                if (!mainView.canPullUp()) {
+                    return false;
+                }
+                offsetY = (int) (getY()) - downY;
+                requestLayout();
+                break;
+        }
+
+        return true;
     }
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

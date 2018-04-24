@@ -34,37 +34,30 @@
 
     </LinearLayout>
 
-    <LinearLayout
+
+    <com.example.huangwenpei.myview.View.MyScrollView
+        android:id="@+id/mscrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#7f00">
+        android:background="#4f09"
+        android:layout_height="match_parent">
 
-        <com.example.huangwenpei.myview.View.MyScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/mscrollview"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="500dp"
+                android:text="主面板" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="500dp"
-                    android:text="主面板" />
-
-                <TextView
-                    android:id="@+id/main_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="500dp"
-                    android:text="主面板" />
-            </LinearLayout>
-
-
-        </com.example.huangwenpei.myview.View.MyScrollView>
-
-    </LinearLayout>
+            <TextView
+                android:id="@+id/main_tv"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:text="主面板" />
+        </LinearLayout>
+    </com.example.huangwenpei.myview.View.MyScrollView>
 
 
 </com.example.huangwenpei.myview.View.SlideMenuView>
