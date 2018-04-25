@@ -4,7 +4,7 @@
     android:layout_height="70dp"
     android:background="#33b5e5">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true">
@@ -13,7 +13,7 @@
             android:id="@+id/back_title"
             android:layout_width="23dp"
             android:layout_height="23dp"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="13dp"
             android:src="@drawable/chat_back" />
 
@@ -21,10 +21,10 @@
             android:id="@+id/label_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:text="DetailActivity"
             android:textColor="#333"
             android:textSize="18sp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

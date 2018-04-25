@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.huangwenpei.myview.View.SlideMenuView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.huangwenpei.myview.View.DrawLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,56 +8,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#4f00"
-        android:gravity="bottom|center_horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ProgressBar
-                android:id="@+id/reg_req_code_gif_view"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:indeterminateBehavior="repeat"
-                android:indeterminateDrawable="@drawable/base_loading_large_anim" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="下拉刷新" />
-        </LinearLayout>
-
+        android:background="#7f00">
 
     </LinearLayout>
 
-
-    <com.example.huangwenpei.myview.View.MyScrollView
-        android:id="@+id/mscrollview"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="#4f09"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#4f00">
+        <TextView
+            android:id="@+id/main_tv"
+            android:text="主面板"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:text="主面板" />
-
-            <TextView
-                android:id="@+id/main_tv"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:text="主面板" />
-        </LinearLayout>
-    </com.example.huangwenpei.myview.View.MyScrollView>
-
-
-</com.example.huangwenpei.myview.View.SlideMenuView>
+    </LinearLayout>
+</com.example.huangwenpei.myview.View.DrawLayout>

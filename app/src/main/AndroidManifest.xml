@@ -21,7 +21,8 @@
         <activity android:name=".Activity.SlidemenuActivity" />
         <activity android:name=".Activity.ChartLineActivity" />
         <activity android:name=".Activity.OverScrollyActivity" />
-        <activity android:name=".Activity.PullableScrollviewActivity"></activity>
+        <activity android:name=".Activity.PullableScrollviewActivity" />
+        <activity android:name=".Activity.MVPActivity"></activity>
     </application>
 
 </manifest>

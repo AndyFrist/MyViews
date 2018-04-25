@@ -23,13 +23,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="500dp"
                     android:gravity="center"
-                    android:text="ĀA" />
+                    android:text="ScrollView也能下拉刷新" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="500dp"
                     android:gravity="center"
-                    android:text="ĀA" />
+                    android:text="ScrollView也能上拉加载更多" />
             </LinearLayout>
         </RelativeLayout>
     </com.example.huangwenpei.myview.View.PullableScrollView>
