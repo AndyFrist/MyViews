@@ -22,7 +22,7 @@
         <activity android:name=".Activity.ChartLineActivity" />
         <activity android:name=".Activity.OverScrollyActivity" />
         <activity android:name=".Activity.PullableScrollviewActivity" />
-        <activity android:name=".Activity.MVPActivity"></activity>
+        <activity android:name=".Activity.SwipeDeleteActivity"></activity>
     </application>
 
 </manifest>

@@ -38,10 +38,10 @@
             android:text="scrollview下拉刷新" />
 
         <Button
-            android:id="@+id/mvpbtn"
+            android:id="@+id/mswipebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MVP" />
+            android:text="侧滑删除" />
 
         <Button
             android:layout_width="wrap_content"
