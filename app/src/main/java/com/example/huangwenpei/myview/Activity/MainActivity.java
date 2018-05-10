@@ -1,16 +1,21 @@
 package com.example.huangwenpei.myview.Activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.Util.sliding.IntentUtils;
+import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn;
+    private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scrollview_pull.setOnClickListener(this);
         mswipebtn = findViewById(R.id.mswipebtn);
         mswipebtn.setOnClickListener(this);
+        qr_code = findViewById(R.id.qr_code);
+        qr_code.setOnClickListener(this);
 
     }
 
@@ -51,6 +58,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.mswipebtn:
                 intent.setClass(this, SwipeDeleteActivity.class);
+                break;
+            case R.id.qr_code:
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+                    return;
+                } else {
+                    intent.setClass(this, CaptureActivity.class);
+                }
                 break;
         }
         IntentUtils.getInstance().startActivity(this, intent);

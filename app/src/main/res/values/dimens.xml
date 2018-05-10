@@ -1,0 +1,99 @@
+<resources>
+
+    <!--小号字体-->
+    <dimen name="textsize_12">12dp</dimen>
+    <!--中号字体-->
+    <dimen name="textsize_14">14dp</dimen>
+    <!--大号字体-->
+    <dimen name="textsize_16">16dp</dimen>
+    <!--超大号字体-->
+    <dimen name="textsize_18">18dp</dimen>
+    <dimen name="textsize_20">20dp</dimen>
+    <dimen name="textsize_22">22dp</dimen>
+    <dimen name="textsize_24">24dp</dimen>
+
+    <dimen name="width_005">0.5dp</dimen>
+    <dimen name="width_01">1dp</dimen>
+    <dimen name="width_02">2dp</dimen>
+    <dimen name="width_03">3dp</dimen>
+    <dimen name="width_04">4dp</dimen>
+    <dimen name="width_05">5dp</dimen>
+    <dimen name="width_06">6dp</dimen>
+    <dimen name="width_07">7dp</dimen>
+    <dimen name="width_08">8dp</dimen>
+    <dimen name="width_09">9dp</dimen>
+    <dimen name="width_10">10dp</dimen>
+    <dimen name="width_11">11dp</dimen>
+    <dimen name="width_12">12dp</dimen>
+    <dimen name="width_13">13dp</dimen>
+    <dimen name="width_14">14dp</dimen>
+    <dimen name="width_15">15dp</dimen>
+    <dimen name="width_16">16dp</dimen>
+    <dimen name="width_17">17dip</dimen>
+    <dimen name="width_19">19dp</dimen>
+    <dimen name="width_20">20dp</dimen>
+    <dimen name="width_23">23dp</dimen>
+    <dimen name="width_24">24dp</dimen>
+    <dimen name="width_26">26dp</dimen>
+    <dimen name="width_25">25dp</dimen>
+    <dimen name="width_28">28dp</dimen>
+    <dimen name="width_30">30dp</dimen>
+    <dimen name="width_32">32dp</dimen>
+    <dimen name="width_34">34dp</dimen>
+    <dimen name="width_35">35dp</dimen>
+    <dimen name="width_36">36dp</dimen>
+    <dimen name="width_37">37dp</dimen>
+    <dimen name="width_38">38dip</dimen>
+    <dimen name="width_39">39dp</dimen>
+    <dimen name="width_40">40dp</dimen>
+    <dimen name="width_41">41dip</dimen>
+    <dimen name="width_43">43dip</dimen>
+    <dimen name="width_44">44dip</dimen>
+    <dimen name="width_45">45dp</dimen>
+    <dimen name="width_46">46dp</dimen>
+    <dimen name="width_49">49dp</dimen>
+    <dimen name="width_50">50dp</dimen>
+    <dimen name="width_51">51dp</dimen>
+    <dimen name="width_52">52dp</dimen>
+    <dimen name="width_54">54dp</dimen>
+    <dimen name="width_55">55dp</dimen>
+    <dimen name="width_58">58dp</dimen>
+    <dimen name="width_60">60dp</dimen>
+    <dimen name="width_63">63dp</dimen>
+    <dimen name="width_65">65dp</dimen>
+    <dimen name="width_67">67dp</dimen>
+    <dimen name="width_72">72dp</dimen>
+    <dimen name="width_76">76dp</dimen>
+    <dimen name="width_79">79dp</dimen>
+    <dimen name="width_80">80dip</dimen>
+    <dimen name="width_85">85dip</dimen>
+    <dimen name="width_90">90dip</dimen>
+    <dimen name="width_93">93dip</dimen>
+    <dimen name="width_95">95dip</dimen>
+    <dimen name="width_100">100dp</dimen>
+    <dimen name="width_103">103dp</dimen>
+    <dimen name="width_110">110dip</dimen>
+    <dimen name="width_115">115dp</dimen>
+    <dimen name="width_120">120dp</dimen>
+    <dimen name="width_131">131dp</dimen>
+    <dimen name="width_140">140dp</dimen>
+    <dimen name="width_144">144dp</dimen>
+    <dimen name="width_150">150dp</dimen>
+    <dimen name="width_157">157dp</dimen>
+    <dimen name="width_160">160dp</dimen>
+    <dimen name="width_164">164dp</dimen>
+    <dimen name="width_170">170dip</dimen>
+    <dimen name="width_180">180dip</dimen>
+    <dimen name="width_200">200dp</dimen>
+    <dimen name="width_210">210dp</dimen>
+    <dimen name="width_215">215dp</dimen>
+    <dimen name="width_220">220dip</dimen>
+    <dimen name="width_240">240dp</dimen>
+    <dimen name="width_253">253dp</dimen>
+    <dimen name="width_260">260dp</dimen>
+    <dimen name="width_280">280dip</dimen>
+    <dimen name="width_305">305dp</dimen>
+    <dimen name="width_400">400dp</dimen>
+
+
+</resources>
