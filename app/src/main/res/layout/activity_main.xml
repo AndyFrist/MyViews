@@ -47,12 +47,13 @@
             android:id="@+id/qr_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="二维码" />
 
         <Button
+            android:id="@+id/circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="圆形控件" />
 
         <Button
             android:layout_width="wrap_content"

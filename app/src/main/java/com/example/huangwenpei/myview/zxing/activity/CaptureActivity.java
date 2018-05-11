@@ -16,7 +16,6 @@
 package com.example.huangwenpei.myview.zxing.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
@@ -34,6 +33,7 @@ import android.widget.Toast;
 
 import com.example.huangwenpei.myview.Activity.BaseActivity;
 import com.example.huangwenpei.myview.R;
+import com.example.huangwenpei.myview.View.BaseFundChartView;
 import com.example.huangwenpei.myview.zxing.assit.AmbientLightManager;
 import com.example.huangwenpei.myview.zxing.assit.BeepManager;
 import com.example.huangwenpei.myview.zxing.camera.CameraManager;
@@ -55,7 +55,7 @@ import com.google.zxing.Result;
  * @description modified
  */
 
-public final class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback,View.OnClickListener {
+public final class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback{
 
     public static final int REQ_CODE = 0xF0F0;
     public static final String KEY_NEED_BEEP = "NEED_BEEP";
@@ -97,7 +97,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
     private BeepManager beepManager;
     private AmbientLightManager ambientLightManager;
     private MyOrientationDetector myOrientationDetector;
-    private ImageView viewtitle_saoyisao,saotiaoma;
+    private BaseFundChartView saosao;
 
     ViewfinderView getViewfinderView() {
         return viewfinderView;
@@ -118,27 +118,20 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         bundleSetting(getIntent().getBundleExtra(EXTRA_SETTING_BUNDLE));
         myOrientationDetector = new MyOrientationDetector(this);
         myOrientationDetector.setLastOrientation(getWindowManager().getDefaultDisplay().getRotation());
-        viewtitle_saoyisao = findViewById(R.id.viewtitle_saoyisao);
-        viewtitle_saoyisao.setOnClickListener(this);
-        saotiaoma = findViewById(R.id.saotiaoma);
-        saotiaoma.setOnClickListener(this);
-        viewtitle_saoyisao.setOnClickListener(this);
+        saosao = findViewById(R.id.saosao);
+        saosao.start();
     }
 
     private void windowSetting() {
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
             window.setNavigationBarColor(Color.TRANSPARENT);
         } else {
-            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -271,22 +264,9 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         String resultString = rawResult.getText();
         if (resultString.equals("")) {
             Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
-        } else if (resultString.startsWith("imei")) {
-            String imei = resultString.replace("imei:", "");
-            Intent intent = new Intent();
-            intent.putExtra("imei", imei);
-            setResult(0, intent);
         } else {
-            String[] strings = resultString.split("sn:");
-            this.split = strings[1].split(",vt:");
-            if (this.split != null && this.split.length == 2) {
-//                Intent intent = new Intent(this, InputSNActivity.class);
-//                intent.putExtra("sn", this.split[0]);
-//                intent.putExtra("vt", this.split[1]);
-//                startActivityX(intent);
-            }
+            Toast.makeText(CaptureActivity.this, "结果："+resultString, Toast.LENGTH_SHORT).show();
         }
-        finish();
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {
@@ -305,7 +285,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
             }
         } catch (Exception e) {
             //Log.w(TAG, e);
-            Toast.makeText(CaptureActivity.this, "深恶", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CaptureActivity.this, "初始化异常", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -325,19 +305,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         onResume();
     }
 
-    @Override
-    public void onClick(View view) {
-        //回退
-        if ( view.getId() == R.id.viewtitle_saoyisao) {
-            finish();
-        }
-        //输入
-        if (view.getId() == R.id.saotiaoma) {
-//            Intent intent = new Intent(CaptureActivity.this, InputSNActivity.class);
-//            startActivityX(intent);
-//            finish();
-        }
-    }
+
 
     private class MyOrientationDetector extends OrientationEventListener {
 

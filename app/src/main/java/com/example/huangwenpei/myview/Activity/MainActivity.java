@@ -15,7 +15,7 @@ import com.example.huangwenpei.myview.Util.sliding.IntentUtils;
 import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code;
+    private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mswipebtn.setOnClickListener(this);
         qr_code = findViewById(R.id.qr_code);
         qr_code.setOnClickListener(this);
+        circle = findViewById(R.id.circle);
+        circle.setOnClickListener(this);
 
     }
 
@@ -66,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     intent.setClass(this, CaptureActivity.class);
                 }
+                break;
+            case R.id.circle:
+                intent.setClass(this, CircleActivity.class);
                 break;
         }
         IntentUtils.getInstance().startActivity(this, intent);
