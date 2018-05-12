@@ -186,6 +186,13 @@ public class MyView2 extends View {
 
         canvas.drawText("梯形", 240, 390, paint);
 
+
+        //渐变矩形
+        Shader mShader1 = new LinearGradient(0, 0, 0, getMeasuredHeight(),new int[]{0x99ffffff,0x990000ff},new float[]{0.1f,0.8f},  Shader.TileMode.CLAMP);
+        paint.setShader(mShader1);
+        canvas.drawRect(170, 490, 630, 950, paint);
+
+
     }
 
 }

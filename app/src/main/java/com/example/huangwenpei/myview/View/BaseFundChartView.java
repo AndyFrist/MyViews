@@ -96,11 +96,16 @@ public class BaseFundChartView extends View implements Runnable {
     }
 
     private void drawLines(Canvas canvas) {
-
-        Shader mShader = new LinearGradient(0, 0, 0, 20 * dimens, new int[]{Color.TRANSPARENT, Color.BLUE}, null, Shader.TileMode.MIRROR);
+        paint1.setStyle(Paint.Style.FILL);
+        Shader mShader = new LinearGradient(0,  bar_Y + radius, 0, bar_Y + radius +50,new int[]{0x00ffffff,0x990000ff},new float[]{0.1f,0.8f},  Shader.TileMode.CLAMP);
         paint1.setShader(mShader);
-//        canvas.drawRect(diameter - bar_X,  bar_Y + radius, diameter + bar_X, bar_Y + radius, paint1);
-        canvas.drawLine(diameter - bar_X, bar_Y + radius, diameter + bar_X, bar_Y + radius, paint1);
+        canvas.drawRect(diameter - bar_X,  bar_Y + radius, diameter + bar_X, bar_Y + radius +50, paint1);
+//        canvas.drawLine(diameter - bar_X, bar_Y + radius, diameter + bar_X, bar_Y + radius, paint1);
+
+        //渐变矩形
+//        Shader mShader1 = new LinearGradient(0, 0, 0, getMeasuredHeight(),new int[]{0x99ffffff,0x990000ff},new float[]{0.1f,0.8f},  Shader.TileMode.CLAMP);
+//        paint1.setShader(mShader1);
+//        canvas.drawRect(170, 490, 630, 950, paint1);
 
     }
 
