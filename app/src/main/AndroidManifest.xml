@@ -29,7 +29,8 @@
         <activity android:name=".Activity.PullableScrollviewActivity" />
         <activity android:name=".Activity.SwipeDeleteActivity" />
         <activity android:name=".zxing.activity.CaptureActivity" />
-        <activity android:name=".Activity.CircleActivity"></activity>
+        <activity android:name=".Activity.CircleActivity" />
+        <activity android:name=".Activity.CircleBitmapActivity"></activity>
     </application>
 
 </manifest>

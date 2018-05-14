@@ -2,9 +2,9 @@ package com.example.huangwenpei.myview.View;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
@@ -24,8 +24,9 @@ import com.example.huangwenpei.myview.Util.AndroidUtil;
 public class BaseFundChartView extends View implements Runnable {
 
     private Paint paint = new Paint();
+    //整个屏幕区域
     private RectF re = new RectF(0, 0, AndroidUtil.getScreenWidth(MyApp.getContext()), AndroidUtil.getScreenHeight(MyApp.getContext()));
-
+    //一个dp
     private float dimens;
     //直径
     private float diameter = AndroidUtil.getScreenWidth(MyApp.getContext()) / 2;
@@ -47,14 +48,14 @@ public class BaseFundChartView extends View implements Runnable {
     public BaseFundChartView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         dimens = context.getResources().getDimension(R.dimen.width_01);
-        init();
+        re1 = new RectF(0 + radius + 10 * dimens, 0 + radius + 10 * dimens, (diameter + radius - 10 * dimens), (diameter + radius - 10 * dimens));
     }
 
     private void init() {
+        paint.reset();
+        paint1.reset();
         paint.setAntiAlias(true);
         paint1.setAntiAlias(true);
-        re1 = new RectF(0 + radius + 10 * dimens, 0 + radius + 10 * dimens, (diameter + radius - 10 * dimens), (diameter + radius - 10 * dimens));
-
     }
 
 
@@ -62,8 +63,10 @@ public class BaseFundChartView extends View implements Runnable {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        init();
+
         //画透明圆
-        paint.setColor(0x990000ff);
+        paint.setColor(0xff0000ff);
         canvas.drawCircle(diameter, diameter, radius, paint);
 
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
@@ -72,47 +75,36 @@ public class BaseFundChartView extends View implements Runnable {
         paint.setColor(0x99000000);
         canvas.drawRect(re, paint);
 
-
         //画蓝色的圆环
         paint1.setColor(0xff0000ff);
         paint1.setStyle(Paint.Style.STROKE);//设置为空心
         paint1.setStrokeWidth(6 * dimens);
         canvas.drawCircle(diameter, diameter, radius, paint1);
 
-        //画扫动线
-        drawLines(canvas);
-
         //画4个扇形
         paint1.reset();
         paint1.setAntiAlias(true);
+        paint1.setStrokeWidth(2 * dimens);
         paint1.setStyle(Paint.Style.STROKE);//设置为空心
         paint1.setColor(0xffffffff);
-        paint1.setStrokeWidth(2 * dimens);
         for (int i = 0; i < 4; i++) {
-            canvas.drawArc(re1, i * 90 - 90, 85, false, paint1);
+            canvas.drawArc(re1, i * 90 - 87, 85, false, paint1);
         }
 
-
-    }
-
-    private void drawLines(Canvas canvas) {
-        paint1.setStyle(Paint.Style.FILL);
-        Shader mShader = new LinearGradient(0,  bar_Y + radius, 0, bar_Y + radius +50,new int[]{0x00ffffff,0x990000ff},new float[]{0.1f,0.8f},  Shader.TileMode.CLAMP);
-        paint1.setShader(mShader);
-        canvas.drawRect(diameter - bar_X,  bar_Y + radius, diameter + bar_X, bar_Y + radius +50, paint1);
-//        canvas.drawLine(diameter - bar_X, bar_Y + radius, diameter + bar_X, bar_Y + radius, paint1);
-
-        //渐变矩形
-//        Shader mShader1 = new LinearGradient(0, 0, 0, getMeasuredHeight(),new int[]{0x99ffffff,0x990000ff},new float[]{0.1f,0.8f},  Shader.TileMode.CLAMP);
-//        paint1.setShader(mShader1);
-//        canvas.drawRect(170, 490, 630, 950, paint1);
+        //画扫动线
+        paint.setStyle(Paint.Style.FILL);
+        paint.setAntiAlias(true);
+        Shader mShader = new LinearGradient(0, bar_Y + radius, 0, bar_Y + radius + 100 * dimens, new int[]{0x00ffffff, 0xff0000ff}, new float[]{0.1f, 0.8f}, Shader.TileMode.CLAMP);
+        paint.setShader(mShader);
+        Path path = new Path();
+        path.addCircle(diameter, diameter, radius - 10 * dimens, Path.Direction.CW);
+        canvas.clipPath(path);
+        canvas.drawRect(diameter - radius, bar_Y + radius, diameter + radius, bar_Y + radius + 100 * dimens, paint);
 
     }
 
     private boolean isRun = false;
     private float bar_Y = 0;
-
-    private float bar_X = 0;
 
     @Override
     public void run() {
@@ -122,7 +114,6 @@ public class BaseFundChartView extends View implements Runnable {
             }
             bar_Y = bar_Y + 2 * dimens;
 
-            bar_X = (float) Math.sqrt(radius * radius - (radius - bar_Y) * (radius - bar_Y));
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

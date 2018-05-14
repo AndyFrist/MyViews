@@ -56,9 +56,10 @@
             android:text="圆形控件" />
 
         <Button
+            android:id="@+id/circle_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="圆形图片处理" />
 
         <Button
             android:layout_width="wrap_content"

@@ -1,34 +1,42 @@
 package com.example.huangwenpei.myview.View;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.example.huangwenpei.myview.R;
+
 /**
  * Created by ex-xuxiaopeng001
  * on 2018/5/11.
  */
 
-public class MyView2 extends View {
+public class MyView2 extends View implements Runnable {
+    //一个dp
+    private float dimens;
 
     public MyView2(Context context) {
-        super(context);
+        this(context, null);
     }
 
-    public MyView2(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+    public MyView2(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public MyView2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MyView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        dimens = context.getResources().getDimension(R.dimen.width_01);
     }
 
     @Override
@@ -188,11 +196,88 @@ public class MyView2 extends View {
 
 
         //渐变矩形
-        Shader mShader1 = new LinearGradient(0, 0, 0, getMeasuredHeight(),new int[]{0x99ffffff,0x990000ff},new float[]{0.1f,0.8f},  Shader.TileMode.CLAMP);
-        paint.setShader(mShader1);
-        canvas.drawRect(170, 490, 630, 950, paint);
+        Shader mShader1 = new LinearGradient(0, 0, 0, getMeasuredHeight(), new int[]{0x99ffffff, 0x990000ff}, new float[]{0.1f, 0.8f}, Shader.TileMode.CLAMP);
+//        paint.setShader(mShader1);
 
+//        paint.reset();
+//
+//
+//        paint.setColor(Color.RED);
+//        canvas.drawRect(370, 790, 830, 1150, paint);
+//
+//        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+//
+//        paint.setColor(Color.BLUE);
+//        canvas.drawRect(170, 490, 630, 950, paint);
+
+
+        //画黄色的圆 满屏幕那种 bitmap
+//        Bitmap bt = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
+//        canvas.setBitmap(bt);
+//        paint.setColor(Color.YELLOW);
+//        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 200, paint);
+//        //画蓝色的圆 满屏幕那种 bitmap
+//        Bitmap bt2 = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
+//        canvas.setBitmap(bt2);
+//        paint.setColor(Color.BLUE);
+//        canvas.drawCircle(getWidth() / 2 + 200, getHeight() / 2 + 200, 200, paint);
+
+
+        paint.reset();
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(2 * dimens);
+        paint.setColor(0xffff0000);
+        paint.setStyle(Paint.Style.FILL);
+
+
+        paint.setColor(0xff0000ff);
+        canvas.drawRect(cX - bar_X, cY - radius + bar_Y, cX + bar_X, cY - radius + bar_Y + 40, paint);
+
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+
+//        canvas.saveLayerAlpha(0, 0, getWidth(), getHeight(), 255, Canvas.ALL_SAVE_FLAG);
+        canvas.drawCircle(cX, cY, radius, paint);
+//        this.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
     }
 
+    private boolean isRun = false;
+
+    private float cX = 1080 / 2 + 200;
+    private float cY = 1920 / 2 + 200;
+    private float radius = 200;
+
+    private float bar_Y = 0;
+    private float bar_X = 0;
+
+    @Override
+    public void run() {
+
+        while (isRun) {
+            if (bar_Y > radius * 2) {
+                bar_Y = 0;
+            }
+            bar_Y = bar_Y + 2 * dimens;
+
+            bar_X = (float) Math.sqrt(radius * radius - (radius - bar_Y) * (radius - bar_Y));
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            postInvalidate();
+        }
+
+    }
+
+    public void start() {
+        isRun = true;
+        new Thread(this).start();
+    }
+
+    public void stop() {
+        isRun = false;
+    }
 }
