@@ -24,6 +24,10 @@ android {
                            'src/main/java/com/example/huangwenpei/myview/Util/sliding/res']
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
