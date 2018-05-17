@@ -27,36 +27,23 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:id="@+id/flashlight"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/flashlight" />
 
-                <ImageView
-                    android:id="@+id/recode_sign"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@mipmap/flashlight" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/flashlight"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@mipmap/flashlight" />
-            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="开关" />
         </LinearLayout>
 
     </RelativeLayout>

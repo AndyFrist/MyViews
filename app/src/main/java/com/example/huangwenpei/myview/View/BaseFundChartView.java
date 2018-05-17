@@ -102,7 +102,7 @@ public class BaseFundChartView extends View implements Runnable {
         Shader mShader = new LinearGradient(0, bar_Y + radius, 0, bar_Y + radius + height, new int[]{0x00ffffff, 0xff1389ff}, new float[]{0.1f, 0.8f}, Shader.TileMode.CLAMP);
         paint.setShader(mShader);
         Path path = new Path();
-        path.addCircle(point.x, point.y, radius - 10 * dimens, Path.Direction.CW);
+        path.addCircle(point.x, point.y, radius - 11 * dimens, Path.Direction.CW);
         canvas.clipPath(path);
         canvas.drawRect(point.x - radius, bar_Y + radius, point.x + radius, bar_Y + radius + height, paint);
 

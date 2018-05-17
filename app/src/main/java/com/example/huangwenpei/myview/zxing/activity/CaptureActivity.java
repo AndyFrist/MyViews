@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.huangwenpei.myview.Activity.BaseActivity;
@@ -99,8 +100,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
     private AmbientLightManager ambientLightManager;
     private MyOrientationDetector myOrientationDetector;
     private BaseFundChartView saosao;
-    private ImageView flashlight;
-    private ImageView recode_sign;
+    private LinearLayout flashlight;
 
     ViewfinderView getViewfinderView() {
         return viewfinderView;
@@ -124,9 +124,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         saosao = findViewById(R.id.saosao);
         saosao.start();
         flashlight = findViewById(R.id.flashlight);
-        recode_sign = findViewById(R.id.recode_sign);
         flashlight.setOnClickListener(this);
-        recode_sign.setOnClickListener(this);
     }
 
     private void windowSetting() {
@@ -204,6 +202,8 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
     @Override
     protected void onPause() {
+        flash = false;
+        cameraManager.setTorch(false);
         myOrientationDetector.disable();
         if (handler != null) {
             handler.quitSynchronously();
@@ -312,59 +312,23 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         onResume();
     }
 
+    private boolean flash = false;
+
     @Override
     public void onClick(View v) {
         if (v == flashlight) {
-            Toast.makeText(this,"关闭",Toast.LENGTH_LONG).show();
-            openTorch();
-        }
-        if (v == recode_sign) {
-            Toast.makeText(this,"开启",Toast.LENGTH_LONG).show();
-            closeTorch();
+            if (flash) {
+                flash = false;
+                Toast.makeText(this,"关闭",Toast.LENGTH_LONG).show();
+                cameraManager.setTorch(false);
+            }else{
+                flash = true;
+                Toast.makeText(this,"开启",Toast.LENGTH_LONG).show();
+                cameraManager.setTorch(true);
+            }
+
         }
     }
-    private void openTorch() {
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                manager = (android.hardware.camera2.CameraManager) this.getSystemService(Context.CAMERA_SERVICE);
-                if (manager != null) {
-                    manager.setTorchMode("0", true);
-                }
-            } else {
-                camera = Camera.open();
-                Camera.Parameters parameters = camera.getParameters();
-                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-                camera.setParameters(parameters);
-                camera.startPreview();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void closeTorch() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            try {
-                if (manager == null) {
-                    return;
-                }
-                manager.setTorchMode("0", false);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            if (camera == null) {
-                return;
-            }
-            camera.stopPreview();
-            camera.release();
-        }
-    }
-
-
-    private Camera camera;
-    private android.hardware.camera2.CameraManager manager;
 
     private class MyOrientationDetector extends OrientationEventListener {
 
