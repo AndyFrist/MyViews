@@ -62,6 +62,7 @@
             android:text="圆形图片处理" />
 
         <Button
+            android:id="@+id/drag_gridview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AAAAAAAAAA" />

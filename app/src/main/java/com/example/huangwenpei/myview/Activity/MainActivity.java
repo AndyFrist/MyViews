@@ -15,7 +15,7 @@ import com.example.huangwenpei.myview.Util.sliding.IntentUtils;
 import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle,circle_image;
+    private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle, circle_image, drag_gridview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         circle.setOnClickListener(this);
         circle_image = findViewById(R.id.circle_image);
         circle_image.setOnClickListener(this);
+        drag_gridview = findViewById(R.id.drag_gridview);
+        drag_gridview.setOnClickListener(this);
+
 
     }
 
@@ -76,6 +79,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.circle_image:
                 intent.setClass(this, CircleBitmapActivity.class);
+                break;
+            case R.id.drag_gridview:
+                intent.setClass(this, DragItemActivity.class);
+                break;
+            default:
                 break;
         }
         IntentUtils.getInstance().startActivity(this, intent);

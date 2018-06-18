@@ -6,9 +6,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.autofocus" />
 
@@ -35,7 +35,9 @@
         <activity android:name=".Activity.SwipeDeleteActivity" />
         <activity android:name=".zxing.activity.CaptureActivity" />
         <activity android:name=".Activity.CircleActivity" />
-        <activity android:name=".Activity.CircleBitmapActivity"></activity>
+        <activity android:name=".Activity.CircleBitmapActivity" />
+        <activity android:name=".Activity.DragItemActivity"/>
+        <activity android:name=".Activity.MenuManageActivity"/>
     </application>
 
 </manifest>
