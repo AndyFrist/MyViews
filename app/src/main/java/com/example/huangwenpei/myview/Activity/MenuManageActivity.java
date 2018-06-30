@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.huangwenpei.myview.MyApp;
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.zhifubao.AppConfig;
+import com.example.huangwenpei.myview.zhifubao.FileUtil;
 import com.example.huangwenpei.myview.zhifubao.adapter.MenuParentAdapter;
 import com.example.huangwenpei.myview.zhifubao.adapter.MyAdapter;
 import com.example.huangwenpei.myview.zhifubao.drag.DragCallback;
@@ -79,9 +80,9 @@ public class MenuManageActivity extends Activity {
 
 	protected void postMenu() {
 		// TODO Auto-generated method stub
-		List<MenuEntity> indexDataList = (List<MenuEntity>) appContext.readObject(AppConfig.KEY_USER_TEMP);
+		List<MenuEntity> indexDataList = (List<MenuEntity>) FileUtil.readObject(AppConfig.KEY_USER_TEMP);
 		String key = AppConfig.KEY_USER;
-		appContext.saveObject((Serializable) indexDataList, key);
+		FileUtil.saveObject((Serializable) indexDataList, key);
 	}
 
 	private void initView() {
@@ -104,7 +105,7 @@ public class MenuManageActivity extends Activity {
 			}
 		});
 		//获取设置保存到本地的菜单
-		List<MenuEntity> indexDataList = (List<MenuEntity>) appContext.readObject(AppConfig.KEY_USER);
+		List<MenuEntity> indexDataList = (List<MenuEntity>) FileUtil.readObject(AppConfig.KEY_USER);
 		if (indexDataList != null) {
 			indexSelect.clear();
 			indexSelect.addAll(indexDataList);
@@ -154,7 +155,7 @@ public class MenuManageActivity extends Activity {
 
 	private void initData() {
 		// TODO Auto-generated method stub
-		List<MenuEntity> indexDataList = (List<MenuEntity>) appContext.readObject(AppConfig.KEY_All);
+		List<MenuEntity> indexDataList = (List<MenuEntity>) FileUtil.readObject(AppConfig.KEY_All);
 		init(indexDataList);
 	}
 	private void init(List<MenuEntity> indexAll) {
@@ -331,7 +332,7 @@ public class MenuManageActivity extends Activity {
 		// TODO Auto-generated method stub
 		indexSelect.add(menuEntity);
 		String key = AppConfig.KEY_USER_TEMP;
-		appContext.saveObject((Serializable) indexSelect, key);
+		FileUtil.saveObject((Serializable) indexSelect, key);
 		
 		for (int i = 0; i < menuList.size(); i++) {
 			for (int k = 0; k < menuList.get(i).getChilds().size(); k++) {

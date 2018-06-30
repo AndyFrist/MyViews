@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import com.example.huangwenpei.myview.MyApp;
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.zhifubao.AppConfig;
+import com.example.huangwenpei.myview.zhifubao.FileUtil;
 import com.example.huangwenpei.myview.zhifubao.adapter.IndexDataAdapter;
 import com.example.huangwenpei.myview.zhifubao.entity.MenuEntity;
 import com.example.huangwenpei.myview.zhifubao.widget.LineGridView;
@@ -61,15 +62,15 @@ public class DragItemActivity extends BaseActivity {
 
         String key = AppConfig.KEY_All;
         String keyUser = AppConfig.KEY_USER;
-        appContext.saveObject((Serializable) indexDataAll, AppConfig.KEY_All);
+        FileUtil.saveObject((Serializable) indexDataAll, AppConfig.KEY_All);
 
-        List<MenuEntity> indexDataUser = (List<MenuEntity>) appContext.readObject(AppConfig.KEY_USER);
-        if(indexDataUser==null||indexDataUser.size()==0) {
-            appContext.saveObject((Serializable) indexDataAll, AppConfig.KEY_USER);
+        List<MenuEntity> indexDataUser = (List<MenuEntity>) FileUtil.readObject(AppConfig.KEY_USER);
+        if (indexDataUser == null || indexDataUser.size() == 0) {
+            FileUtil.saveObject((Serializable) indexDataAll, AppConfig.KEY_USER);
         }
-        indexDataList = (List<MenuEntity>) appContext.readObject(AppConfig.KEY_USER);
+        indexDataList = (List<MenuEntity>) FileUtil.readObject(AppConfig.KEY_USER);
 
-        MenuEntity allMenuEntity=new MenuEntity();
+        MenuEntity allMenuEntity = new MenuEntity();
         allMenuEntity.setIco("");
         allMenuEntity.setId("all");
         allMenuEntity.setTitle("全部");
@@ -112,8 +113,8 @@ public class DragItemActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         indexDataList.clear();
-        indexDataList = (List<MenuEntity>) appContext.readObject(AppConfig.KEY_USER);
-        MenuEntity allMenuEntity=new MenuEntity();
+        indexDataList = (List<MenuEntity>) FileUtil.readObject(AppConfig.KEY_USER);
+        MenuEntity allMenuEntity = new MenuEntity();
         allMenuEntity.setIco("all_big_ico");
         allMenuEntity.setId("all");
         allMenuEntity.setTitle("全部");

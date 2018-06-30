@@ -12,6 +12,7 @@ import com.example.huangwenpei.myview.Activity.MenuManageActivity;
 import com.example.huangwenpei.myview.MyApp;
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.zhifubao.AppConfig;
+import com.example.huangwenpei.myview.zhifubao.FileUtil;
 import com.example.huangwenpei.myview.zhifubao.drag.DragAdapterInterface;
 import com.example.huangwenpei.myview.zhifubao.entity.MenuEntity;
 
@@ -73,7 +74,7 @@ public class MyAdapter extends BaseAdapter implements DragAdapterInterface {
 				context.DelMeun(datas.get(position),position);
 				datas.remove(position);
 				String key = AppConfig.KEY_USER_TEMP;
-				appContext.saveObject((Serializable) datas, key);
+				FileUtil.saveObject((Serializable) datas, key);
 			}
 		});
 		if (IsEdit) {
@@ -106,7 +107,7 @@ public class MyAdapter extends BaseAdapter implements DragAdapterInterface {
 			MenuEntity object = datas.remove(startPosition);
 			datas.add(endPosition, object);
 			String key = AppConfig.KEY_USER_TEMP;
-			appContext.saveObject((Serializable) datas, key);
+			FileUtil.saveObject((Serializable) datas, key);
 			notifyDataSetChanged();
 		}
 	}
