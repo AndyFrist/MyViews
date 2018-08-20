@@ -22,12 +22,25 @@
         android:orientation="vertical"
         app:anchorPoint="200dp"
         app:behavior_hideable="true"
-        app:behavior_peekHeight="120dp"
+        app:behavior_peekHeight="@dimen/sheet_peakHeight"
         app:layout_behavior="@string/Anchor_BottomSheet_Behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="vertical"
             android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/more"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sheet_peakHeight"
+                android:gravity="center"
+                android:text="查看跟多" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/bus_segment_list"

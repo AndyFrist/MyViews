@@ -95,5 +95,7 @@
     <dimen name="width_305">305dp</dimen>
     <dimen name="width_400">400dp</dimen>
 
+    <dimen name="sheet_peakHeight">45dp</dimen>
+
 
 </resources>
