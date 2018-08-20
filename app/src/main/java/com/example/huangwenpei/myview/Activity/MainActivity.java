@@ -16,7 +16,7 @@ import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle, circle_image, drag_gridview;
-
+private Button viewDragHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         circle_image.setOnClickListener(this);
         drag_gridview = findViewById(R.id.drag_gridview);
         drag_gridview.setOnClickListener(this);
+        viewDragHelper = findViewById(R.id.viewDragHelper);
+        viewDragHelper.setOnClickListener(this);
 
 
     }
@@ -82,6 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.drag_gridview:
                 intent.setClass(this, DragItemActivity.class);
+                break;
+
+            case R.id.viewDragHelper:
+                intent.setClass(this, VerticalDragLayoutActivity.class);
                 break;
             default:
                 break;

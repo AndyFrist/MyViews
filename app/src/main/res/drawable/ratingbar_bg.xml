@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--主背景-->
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/star_no"></item>
+    <!--副进度条-->
+    <item
+        android:id="@android:id/secondaryProgress"
+        android:drawable="@drawable/star_no"></item>
+    <!--主进度条-->
+    <item
+        android:id="@android:id/progress"
+        android:drawable="@drawable/star"></item>
+</layer-list>

@@ -1,5 +1,6 @@
 <com.example.huangwenpei.myview.View.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/refresh_view"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,6 +20,21 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
+                <com.example.huangwenpei.myview.View.RatingBar
+                    android:id="@+id/star"
+                    android:paddingTop="2dp"
+                    android:layout_toRightOf="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:paddingLeft="10dp"
+                    app:starCount="5"
+                    app:starEmpty="@drawable/star_no"
+                    app:starFill="@drawable/star"
+                    app:starHalf="@drawable/star"
+                    app:starImageSize="18dp"
+                    app:starPadding="20dp"
+                    app:starStep="2.5"
+                    app:stepSize="Half"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="500dp"
