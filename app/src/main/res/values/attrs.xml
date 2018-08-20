@@ -46,4 +46,9 @@
             <enum name="Full" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="AnchorBottomSheetBehavior">
+        <attr name="anchorPoint" format="dimension"/>
+    </declare-styleable>
+
 </resources>

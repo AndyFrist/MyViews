@@ -12,4 +12,7 @@
     <string name="loading">正在加载...</string>
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
+
+
+    <string name="Anchor_BottomSheet_Behavior">com.example.huangwenpei.myview.View.behavior.AnchorBottomSheetBehavior</string>
 </resources>

@@ -36,8 +36,9 @@
         <activity android:name=".zxing.activity.CaptureActivity" />
         <activity android:name=".Activity.CircleActivity" />
         <activity android:name=".Activity.CircleBitmapActivity" />
-        <activity android:name=".Activity.DragItemActivity"/>
-        <activity android:name=".Activity.MenuManageActivity"/>
+        <activity android:name=".Activity.DragItemActivity" />
+        <activity android:name=".Activity.MenuManageActivity" />
+        <activity android:name=".Activity.VerticalDragLayoutActivity"/>
     </application>
 
 </manifest>
