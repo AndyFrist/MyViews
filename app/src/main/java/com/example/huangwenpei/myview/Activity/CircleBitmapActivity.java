@@ -5,21 +5,21 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.Util.AndroidUtil;
+import com.example.huangwenpei.myview.View.AutoProgressBar;
+import com.example.huangwenpei.myview.View.AutoProgressView;
 
 public class CircleBitmapActivity extends BaseActivity {
 
@@ -39,6 +39,19 @@ public class CircleBitmapActivity extends BaseActivity {
         head_imageview.setImageBitmap(bmp);
 
         initListener();
+
+        AutoProgressView autoProgressView = findViewById(R.id.auto_process);
+
+        autoProgressView.setProgress(0.75);
+        autoProgressView.setRateBackgroundColor("#e40000");
+        autoProgressView.setOrientation(LinearLayout.VERTICAL);
+        autoProgressView.setAnimRate((int) (0.75 * 30));
+
+        AutoProgressBar auto_process_bar = findViewById(R.id.auto_process_bar);
+        auto_process_bar.setProgressValue(80, AutoProgressBar.Orientation.Vertical);
+
+        AutoProgressBar auto_process_bar2 = findViewById(R.id.auto_process_bar2);
+        auto_process_bar2.setProgressValue(80, AutoProgressBar.Orientation.Horizontal);
 
     }
 
