@@ -48,10 +48,10 @@ public class CircleBitmapActivity extends BaseActivity {
         autoProgressView.setAnimRate((int) (0.75 * 30));
 
         AutoProgressBar auto_process_bar = findViewById(R.id.auto_process_bar);
-        auto_process_bar.setProgressValue(80, AutoProgressBar.Orientation.Vertical);
+        auto_process_bar.setProgressValue(2, AutoProgressBar.Orientation.Vertical);
 
         AutoProgressBar auto_process_bar2 = findViewById(R.id.auto_process_bar2);
-        auto_process_bar2.setProgressValue(80, AutoProgressBar.Orientation.Horizontal);
+        auto_process_bar2.setProgressValue(1, AutoProgressBar.Orientation.Horizontal);
 
     }
 

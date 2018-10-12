@@ -21,8 +21,8 @@ public class AutoProgressBar extends RelativeLayout implements Runnable {
     private Handler handler = new Handler();
     private int progressMax = 100;    //最大值
     private int progressValue = 60;  //值
-    private int animRate = 1; //动画速度   以每1毫秒计
-    private int size = 0; //进度条的尺寸
+    private float animRate = 1; //动画速度   以每1毫秒计
+    private float size = 0; //进度条的尺寸
     private Paint paint;
     private RelativeLayout.LayoutParams layoutParams;
 
@@ -55,7 +55,7 @@ public class AutoProgressBar extends RelativeLayout implements Runnable {
             if (size < (progressValue * comHeight) / progressMax) {
                 size += animRate;
 //            layoutParams = new RelativeLayout.LayoutParams(comWidth, size);
-                layoutParams.height = size;
+                layoutParams.height = (int)(size+0.5);
                 layoutParams.width = comWidth;
                 layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
                 foreground.setLayoutParams(layoutParams);
@@ -69,7 +69,7 @@ public class AutoProgressBar extends RelativeLayout implements Runnable {
                 size += animRate;
 //            layoutParams = new RelativeLayout.LayoutParams(comWidth, size);
                 layoutParams.height = comHeight;
-                layoutParams.width = size;
+                layoutParams.width = (int)(size+0.5);
                 layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 foreground.setLayoutParams(layoutParams);
 
@@ -107,7 +107,7 @@ public class AutoProgressBar extends RelativeLayout implements Runnable {
         this.progressValue = progressValue;
         this.orientation = orientation;
         handler.postDelayed(this, 100);
-        animRate = progressValue /10;
+        animRate = progressValue /10f;
     }
 
     private Orientation orientation = Orientation.Horizontal;

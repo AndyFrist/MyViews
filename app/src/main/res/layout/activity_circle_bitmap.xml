@@ -21,14 +21,14 @@
 
         <com.example.huangwenpei.myview.View.AutoProgressView
             android:id="@+id/auto_process"
-            android:layout_width="30dp"
-            android:layout_height="400dp"
+            android:layout_width="20dp"
+            android:layout_height="200dp"
             android:layout_marginTop="30dp" />
 
         <com.example.huangwenpei.myview.View.AutoProgressBar
             android:id="@+id/auto_process_bar"
-            android:layout_width="30dp"
-            android:layout_height="400dp"
+            android:layout_width="20dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="45dp">
 
             <View
