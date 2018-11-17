@@ -40,9 +40,21 @@
                 android:layout_width="1dp"
                 android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/shap_red" />
 
         </com.example.huangwenpei.myview.View.AutoProgressBar>
+
+        <com.example.huangwenpei.myview.View.VerticalProgressBar
+            android:id="@+id/verticalProgressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:max="1000"
+            android:progressDrawable="@drawable/progress_shape"
+            android:maxWidth="10dip"
+            android:minWidth="10dip"
+            android:progress="15" />
 
     </LinearLayout>
 
@@ -61,6 +73,7 @@
             android:layout_width="1dp"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/shap_red" />
 
     </com.example.huangwenpei.myview.View.AutoProgressBar>

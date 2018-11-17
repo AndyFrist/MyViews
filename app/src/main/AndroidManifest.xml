@@ -39,7 +39,8 @@
         <activity android:name=".Activity.DragItemActivity" />
         <activity android:name=".Activity.MenuManageActivity" />
         <activity android:name=".Activity.VerticalDragLayoutActivity" />
-        <activity android:name=".Activity.SearchActivity"></activity>
+        <activity android:name=".Activity.SearchActivity" />
+        <activity android:name=".Activity.HeadActivity"></activity>
     </application>
 
 </manifest>

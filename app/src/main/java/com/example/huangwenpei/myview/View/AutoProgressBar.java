@@ -51,31 +51,51 @@ public class AutoProgressBar extends RelativeLayout implements Runnable {
 
     @Override
     public void run() {
-        if (orientation == Orientation.Vertical) {
-            if (size < (progressValue * comHeight) / progressMax) {
-                size += animRate;
+        if (anim) {
+            if (orientation == Orientation.Vertical) {
+                if (size < (progressValue * comHeight) / progressMax) {
+                    size += animRate;
 //            layoutParams = new RelativeLayout.LayoutParams(comWidth, size);
                 layoutParams.height = (int)(size+0.5);
                 layoutParams.width = comWidth;
+                    if (layoutParams.height < layoutParams.width) {
+                        layoutParams.width = layoutParams.height;
+                    }
                 layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
                 foreground.setLayoutParams(layoutParams);
 
-                handler.postDelayed(this, 1);
-            } else {
-                handler.removeCallbacks(this);
-            }
-        } else if (orientation == Orientation.Horizontal) {
-            if (size < (progressValue * comWidth) / progressMax) {
-                size += animRate;
+                    handler.postDelayed(this, 1);
+                } else {
+                    handler.removeCallbacks(this);
+                }
+            } else if (orientation == Orientation.Horizontal) {
+                if (size < (progressValue * comWidth) / progressMax) {
+                    size += animRate;
 //            layoutParams = new RelativeLayout.LayoutParams(comWidth, size);
                 layoutParams.height = comHeight;
                 layoutParams.width = (int)(size+0.5);
+                    if (layoutParams.height > layoutParams.width) {
+                        layoutParams.height = layoutParams.width;
+                    }
                 layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 foreground.setLayoutParams(layoutParams);
 
-                handler.postDelayed(this, 1);
-            } else {
-                handler.removeCallbacks(this);
+                    handler.postDelayed(this, 1);
+                } else {
+                    handler.removeCallbacks(this);
+                }
+            }
+        } else {
+            if (orientation == Orientation.Vertical) {
+                layoutParams.height = (progressValue * comHeight) / progressMax;
+                layoutParams.width = comWidth;
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                foreground.setLayoutParams(layoutParams);
+            } else if (orientation == Orientation.Horizontal) {
+                layoutParams.height = comHeight;
+                layoutParams.width = (progressValue * comWidth) / progressMax;
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                foreground.setLayoutParams(layoutParams);
             }
         }
         requestLayout();
@@ -106,9 +126,21 @@ public class AutoProgressBar extends RelativeLayout implements Runnable {
     public void setProgressValue(int progressValue, Orientation orientation) {
         this.progressValue = progressValue;
         this.orientation = orientation;
+        this.size = 0;
+        animRate = progressValue / 10f;
         handler.postDelayed(this, 100);
-        animRate = progressValue /10f;
+        if (orientation == Orientation.Vertical) {
+            layoutParams.height = 0;
+        } else {
+            layoutParams.width = 0;
+        }
     }
+
+    public void setProgressValue(int progressValue, Orientation orientation, boolean anim) {
+        this.anim = anim;
+        setProgressValue(progressValue, orientation);
+    }
+    boolean anim = true;
 
     private Orientation orientation = Orientation.Horizontal;
 

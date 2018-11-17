@@ -1,6 +1,7 @@
 package com.example.huangwenpei.myview.Activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SearchAdapter.PullMoreListener{
 
     EditText searchEdit;
     RecyclerView searchRecyclerview;
@@ -63,12 +64,29 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void init() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             data.add(i + "号种子");
         }
         list.addAll(data);
         searchAdapter = new SearchAdapter(this, list);
         searchRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         searchRecyclerview.setAdapter(searchAdapter);
+        searchAdapter.setPullMoreListener(this);
+    }
+
+    @Override
+    public void onLoadMore() {
+       new Handler().postDelayed(new Runnable() {
+           @Override
+           public void run() {
+               list.add("更多的数据0");
+               searchAdapter.notifyItemInserted(list.size());
+           }
+       },3000);
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }
