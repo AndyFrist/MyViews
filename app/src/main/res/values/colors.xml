@@ -19,4 +19,6 @@
     <color name="red_light">#fff0f5</color>
 
     <color name="transd">#56000000</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

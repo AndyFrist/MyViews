@@ -14,6 +14,7 @@ import com.example.huangwenpei.myview.View.swipedelete.CommonAdapter;
 import com.example.huangwenpei.myview.View.swipedelete.SwipeLayout;
 import com.example.huangwenpei.myview.View.swipedelete.SwipeLayoutManager;
 import com.example.huangwenpei.myview.View.swipedelete.ViewHolder;
+import com.example.huangwenpei.myview.dialog.ShowImagesDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +86,7 @@ public class SwipeDeleteActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(SwipeDeleteActivity.this, "call", Toast.LENGTH_SHORT).show();
+                    new ShowImagesDialog(SwipeDeleteActivity.this, "http://img4.imgtn.bdimg.com/it/u=3048987233,4186235391&fm=15&gp=0.jpg").show();
                 }
             });
 
