@@ -16,7 +16,7 @@ import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle, circle_image, drag_gridview;
-    private Button viewDragHelper, search_recyclerview;
+    private Button viewDragHelper, search_recyclerview,animater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewDragHelper.setOnClickListener(this);
         search_recyclerview = findViewById(R.id.search_recyclerview);
         search_recyclerview.setOnClickListener(this);
+        animater = findViewById(R.id.animater);
+        animater.setOnClickListener(this);
 
 
     }
@@ -94,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.search_recyclerview:
                 intent.setClass(this, SearchActivity.class);
+                break;
+            case R.id.animater:
+                intent.setClass(this, AnimaterActivity.class);
                 break;
             default:
                 break;

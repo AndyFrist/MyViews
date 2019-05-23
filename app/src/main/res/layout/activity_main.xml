@@ -88,9 +88,10 @@
             android:text="搜索关键字高亮recycleview" />
 
         <Button
+            android:id="@+id/animater"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="动画总结" />
 
         <Button
             android:layout_width="wrap_content"
