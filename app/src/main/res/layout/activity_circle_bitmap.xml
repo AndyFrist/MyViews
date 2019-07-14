@@ -51,10 +51,68 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:max="1000"
-            android:progressDrawable="@drawable/progress_shape"
             android:maxWidth="10dip"
             android:minWidth="10dip"
-            android:progress="15" />
+            android:progress="15"
+            android:progressDrawable="@drawable/progress_shape" />
+
+
+        <com.example.huangwenpei.myview.View.AutoProgress
+            android:id="@+id/progress_auto"
+            android:layout_width="10dp"
+            android:layout_height="230dp"
+            android:layout_marginLeft="20dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shap_blue" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shap_red" />
+        </com.example.huangwenpei.myview.View.AutoProgress>
+
+        <com.example.huangwenpei.myview.View.AutoProgress
+            android:id="@+id/progress_auto1"
+            android:layout_width="10dp"
+            android:layout_height="230dp"
+            android:layout_marginLeft="20dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shap_blue" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shap_red" />
+        </com.example.huangwenpei.myview.View.AutoProgress>
+
+        <com.example.huangwenpei.myview.View.AutoProgress
+            android:id="@+id/progress_auto2"
+            android:layout_width="10dp"
+            android:layout_height="230dp"
+            android:layout_marginLeft="20dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shap_blue" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shap_red" />
+        </com.example.huangwenpei.myview.View.AutoProgress>
 
     </LinearLayout>
 
@@ -77,4 +135,79 @@
             android:background="@drawable/shap_red" />
 
     </com.example.huangwenpei.myview.View.AutoProgressBar>
+
+    <com.example.huangwenpei.myview.View.AutoProgress
+        android:id="@+id/progress"
+        android:layout_width="300dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="20dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shap_blue" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shap_red" />
+    </com.example.huangwenpei.myview.View.AutoProgress>
+
+    <com.example.huangwenpei.myview.View.AutoProgress
+        android:id="@+id/progress1"
+        android:layout_width="300dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="20dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shap_blue" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shap_red" />
+    </com.example.huangwenpei.myview.View.AutoProgress>
+
+    <com.example.huangwenpei.myview.View.AutoProgress
+        android:id="@+id/progress2"
+        android:layout_width="300dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="20dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shap_blue" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shap_red" />
+    </com.example.huangwenpei.myview.View.AutoProgress>
+
+    <com.example.huangwenpei.myview.View.ProgressBar
+        android:id="@+id/myview"
+        android:layout_width="300dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="20dp" />
+
+    <com.example.huangwenpei.myview.View.ProgressBar
+        android:id="@+id/myview1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp" />
+
+    <com.example.huangwenpei.myview.View.ProgressBar
+        android:id="@+id/myview2"
+        android:layout_width="300dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="20dp" />
 </LinearLayout>
