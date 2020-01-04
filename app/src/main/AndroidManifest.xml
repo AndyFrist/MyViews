@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.huangwenpei.myview">
-
     <!-- 二维码权限 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -20,6 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Activity.MenuActivity"></activity>
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,8 @@
         <activity android:name=".Activity.VerticalDragLayoutActivity" />
         <activity android:name=".Activity.SearchActivity" />
         <activity android:name=".Activity.HeadActivity" />
-        <activity android:name=".Activity.AnimaterActivity"></activity>
+        <activity android:name=".Activity.AnimaterActivity" />
+        <activity android:name=".Activity.GalleryActivity" />
     </application>
 
 </manifest>

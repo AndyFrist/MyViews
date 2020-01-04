@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+    android:background="@color/colorPrimary"
+              android:padding="@dimen/width_10">
+
+    <RelativeLayout
+        android:layout_width="@dimen/width_100"
+        android:layout_height="@dimen/width_100"
+        android:id="@+id/rl"
+        android:background="@drawable/bg_ring_stroke"
+        android:padding="@dimen/width_05">
+
+        <com.example.huangwenpei.myview.View.RoundImageViewByXfermode
+            android:id="@+id/iv_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"/>
+
+        <ImageView
+            android:id="@+id/iv_device_model"
+            android:layout_width="@dimen/width_15"
+            android:layout_height="@dimen/width_15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_device_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/width_08"
+        android:text="AAAAA"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_16"/>
+</LinearLayout>
