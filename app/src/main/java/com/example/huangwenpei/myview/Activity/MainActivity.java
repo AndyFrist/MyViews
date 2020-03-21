@@ -16,7 +16,7 @@ import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle, circle_image, drag_gridview;
-    private Button viewDragHelper, search_recyclerview,animater,gallery,menu;
+    private Button viewDragHelper, search_recyclerview,animater,gallery,menu,qrcodeLongClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gallery.setOnClickListener(this);
         menu = findViewById(R.id.menu);
         menu.setOnClickListener(this);
+        qrcodeLongClick = findViewById(R.id.qrcodeLongClick);
+        qrcodeLongClick.setOnClickListener(this);
 
 
     }
@@ -109,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu:
                 intent.setClass(this, MenuActivity.class);
+                break;
+            case R.id.qrcodeLongClick:
+                intent.setClass(this, QrCodeActivity.class);
                 break;
             default:
                 break;
