@@ -75,4 +75,10 @@
         android:layout_height="200dp"
         android:layout_gravity="center" />
 
+    <com.example.huangwenpei.myview.View.MusicView
+        android:id="@+id/music"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+/>
+
 </LinearLayout>

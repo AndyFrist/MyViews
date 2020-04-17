@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.View.CircleView;
+import com.example.huangwenpei.myview.View.MusicView;
 
 public class AnimaterActivity extends AppCompatActivity implements View.OnClickListener {
     private Button translationBtn ;
@@ -26,6 +27,8 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
     private CircleView mycircle ;
 
     private Button testBtn ;
+
+    private MusicView musicView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         testBtn = (Button) findViewById(R.id.test);
 
         mycircle = (CircleView) findViewById(R.id.mycircle);
-
+        musicView = findViewById(R.id.music);
 
 
         translationBtn.setOnClickListener(this);
@@ -80,6 +83,7 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.test:
                 Toast.makeText(this, "属性动画测试", Toast.LENGTH_SHORT).show();
+                musicView.startAnimate();
                 break;
         }
     }
