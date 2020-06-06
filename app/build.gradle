@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.huangwenpei.myview"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -47,4 +47,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.github.chrisbanes.photoview:library:+'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.github.AndyFrist:DemoList:1.0.2'
 }
