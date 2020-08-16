@@ -236,7 +236,7 @@ public class FloorView extends FrameLayout {
     private void setState(int position) {
         //获取系统震动服务
         Vibrator vib = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
-        stateTV.setVisibility(VISIBLE);
+//        stateTV.setVisibility(VISIBLE);
         if (position <= 0 && currentState != normal) {
             currentState = normal;
             stateTV.setText("初始状态");
@@ -256,7 +256,7 @@ public class FloorView extends FrameLayout {
             vib.vibrate(70);
         } else if (position >= mHeight && currentState != atFloored) {
             currentState = atFloored;
-            stateTV.setVisibility(GONE);
+//            stateTV.setVisibility(GONE);
             stateTV.setText("到二楼了");
         }
     }

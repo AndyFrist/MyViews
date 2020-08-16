@@ -12,19 +12,31 @@
         android:layout_height="match_parent"
         android:background="#600f">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/aa"
+            android:scaleType="centerCrop"/>
         <TextView
             android:id="@+id/stateTV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/width_50"
             android:layout_alignParentBottom="true"
             android:gravity="center"
+            android:background="@color/red"
             android:text="下拉刷新" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#6f00">
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="下拉刷新，继续下拉到二楼"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
