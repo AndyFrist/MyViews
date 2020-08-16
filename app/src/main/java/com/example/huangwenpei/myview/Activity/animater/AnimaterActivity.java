@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.View.CircleView;
+import com.example.huangwenpei.myview.View.MusicView;
+import com.example.huangwenpei.myview.View.MusicView_handler;
 
 public class AnimaterActivity extends AppCompatActivity implements View.OnClickListener {
     private Button translationBtn ;
@@ -27,6 +29,9 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
     private CircleView mycircle ;
 
     private Button testBtn ;
+
+    private MusicView musicView;
+    private MusicView_handler musicHas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,8 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         testBtn = (Button) findViewById(R.id.test);
 
         mycircle = (CircleView) findViewById(R.id.mycircle);
-
+        musicView = findViewById(R.id.music);
+        musicHas = findViewById(R.id.musicHas);
 
 
         translationBtn.setOnClickListener(this);
@@ -54,6 +60,8 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         alphaBtn.setOnClickListener(this);
         setBtn.setOnClickListener(this);
         valueBtn.setOnClickListener(this);
+        musicView.setOnClickListener(this);
+        musicHas.setOnClickListener(this);
     }
 
     @Override
@@ -81,6 +89,12 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.test:
                 Toast.makeText(this, "属性动画测试", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.music:
+                musicView.startAnimate();
+                break;
+            case R.id.musicHas:
+                musicHas.start();
                 break;
         }
     }
@@ -113,11 +127,12 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-
-
-
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        musicView.stop();
+        musicHas.stop();
+    }
 
     private void set() {
         PropertyValuesHolder translateXAnimaotr = PropertyValuesHolder.ofFloat("translationX", 0f, 200f);
