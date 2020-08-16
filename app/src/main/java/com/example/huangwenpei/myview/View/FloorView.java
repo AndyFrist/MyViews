@@ -15,8 +15,10 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.huangwenpei.myview.R;
+import com.example.huangwenpei.myview.Util.LogUtil;
 
 public class FloorView extends FrameLayout {
+    private static final String TAG = "FloorView";
     Context context;
     ViewDragHelper viewDragHelper;
     ViewGroup topContent;
@@ -75,7 +77,7 @@ public class FloorView extends FrameLayout {
 
             newTop = fixTop(newTop);
             if (changedView == topContent) {
-//                topContent.layout(0, 0, mWidth, mHeight);
+                LogUtil.e(TAG,"newTop = " + newTop);
                 mainContent.layout(0, newTop, mWidth, mHeight + newTop);
             }
             if (changedView == mainContent) {
@@ -123,6 +125,7 @@ public class FloorView extends FrameLayout {
                 ViewCompat.postInvalidateOnAnimation(this);
             }
         } else {
+            LogUtil.e(TAG,"close = " + finalTop + mHeight);
             mainContent.layout(finalTop, 0, 0 + mWidth, finalTop + mHeight);
         }
     }
@@ -141,7 +144,8 @@ public class FloorView extends FrameLayout {
                 ViewCompat.postInvalidateOnAnimation(this);
             }
         } else {
-            mainContent.layout(finalTop, 0, 0 + mWidth, finalTop + mHeight);
+            LogUtil.e(TAG,"open = " + finalTop + mHeight);
+            mainContent.layout(0, finalTop, 0 + mWidth, finalTop + mHeight);
         }
     }
 
@@ -159,7 +163,8 @@ public class FloorView extends FrameLayout {
                 ViewCompat.postInvalidateOnAnimation(this);
             }
         } else {
-            mainContent.layout(finalTop, 0, 0 + mWidth, finalTop + mHeight);
+            LogUtil.e(TAG,"gotoFloor = " + finalTop + mHeight);
+            mainContent.layout(0, finalTop, 0 + mWidth, finalTop + mHeight);
         }
     }
 
@@ -220,7 +225,7 @@ public class FloorView extends FrameLayout {
     //下拉中。。。达到释放可刷新（松手加载）
     private static final int release2flshing = 2;
     //释放后。。。正在刷新（加载中..）
-    private static final int loding = 3;
+    private static final int loading = 3;
     //下拉中。。。达到释放可到二楼（继续下拉到二楼）
     private static final int release2Floor = 4;
     //停留在二楼
@@ -229,29 +234,30 @@ public class FloorView extends FrameLayout {
 
 
     private void setState(int position) {
-
-        if (position <= 0) {
+        //获取系统震动服务
+        Vibrator vib = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+        stateTV.setVisibility(VISIBLE);
+        if (position <= 0 && currentState != normal) {
             currentState = normal;
-            stateTV.setText("下拉刷新");
-        } else if (position < range / 2) {
+            stateTV.setText("初始状态");
+        } else if (position < range / 2 && currentState != goToReflsh) {
             currentState = goToReflsh;
             stateTV.setText("下拉刷新");
-        } else if (position > range / 2 && position < range) {
+        } else if (position > range / 2 && position < range && currentState != release2flshing) {
             currentState = release2flshing;
             stateTV.setText("松手加载");
-            //获取系统震动服务
-            Vibrator vib = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);//震动70毫秒
             vib.vibrate(70);
-        } else if (position == range) {
-            currentState = loding;
+        } else if (position == range && currentState != loading) {
+            currentState = loading;
             stateTV.setText("加载中...");
-        } else if (position > range) {
+        } else if (position > range && position < mHeight && currentState != release2Floor) {
             currentState = release2Floor;
             stateTV.setText("继续下拉到二楼");
-        } else if (position >= mHeight) {
+            vib.vibrate(70);
+        } else if (position >= mHeight && currentState != atFloored) {
             currentState = atFloored;
             stateTV.setVisibility(GONE);
-            stateTV.setText("下拉刷新");
+            stateTV.setText("到二楼了");
         }
     }
 }
