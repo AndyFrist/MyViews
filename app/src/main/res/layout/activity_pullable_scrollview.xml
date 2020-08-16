@@ -41,6 +41,11 @@
                     android:gravity="center"
                     android:text="ScrollView也能下拉刷新" />
 
+                <com.example.huangwenpei.myview.View.DrawBitmapView
+                    android:layout_width="@dimen/width_90"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="@dimen/width_90"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="500dp"

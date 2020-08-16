@@ -86,7 +86,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="搜索关键字高亮recycleview" />
-
+        <Button
+            android:id="@+id/baseAnimater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="补间动画" />
         <Button
             android:id="@+id/animater"
             android:layout_width="wrap_content"
@@ -106,23 +110,23 @@
             android:text="菜单滚动" />
 
         <Button
+            android:id="@+id/qrcodeLongClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="长按识别二维码" />
 
         <Button
+            android:id="@+id/skillView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="技能控件" />
+
+
 
         <Button
+            android:id="@+id/floorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="AAAAAAAAAA" />
+            android:text="下拉上二楼" />
     </LinearLayout>
 </LinearLayout>

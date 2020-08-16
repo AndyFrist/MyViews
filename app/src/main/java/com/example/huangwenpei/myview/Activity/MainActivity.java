@@ -10,13 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.huangwenpei.myview.Activity.animater.AnimaterActivity;
+import com.example.huangwenpei.myview.Activity.animater.BaseAnimatorActivity;
 import com.example.huangwenpei.myview.R;
 import com.example.huangwenpei.myview.Util.sliding.IntentUtils;
 import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle, circle_image, drag_gridview;
-    private Button viewDragHelper, search_recyclerview,animater,gallery,menu;
+    private Button viewDragHelper, search_recyclerview,baseAnimater,animater,gallery,menu,qrcodeLongClick,skillView,floorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +52,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         search_recyclerview.setOnClickListener(this);
         animater = findViewById(R.id.animater);
         animater.setOnClickListener(this);
+        baseAnimater = findViewById(R.id.baseAnimater);
+        baseAnimater.setOnClickListener(this);
         gallery = findViewById(R.id.gallery);
         gallery.setOnClickListener(this);
         menu = findViewById(R.id.menu);
         menu.setOnClickListener(this);
+        qrcodeLongClick = findViewById(R.id.qrcodeLongClick);
+        qrcodeLongClick.setOnClickListener(this);
+        skillView = findViewById(R.id.skillView);
+        skillView.setOnClickListener(this);
+        floorView = findViewById(R.id.floorView);
+        floorView.setOnClickListener(this);
+
+
 
 
     }
+
+
 
     @Override
     public void onClick(View view) {
@@ -104,11 +118,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.animater:
                 intent.setClass(this, AnimaterActivity.class);
                 break;
+            case R.id.baseAnimater:
+                intent.setClass(this, BaseAnimatorActivity.class);
+                break;
             case R.id.gallery:
                 intent.setClass(this, GalleryActivity.class);
                 break;
             case R.id.menu:
                 intent.setClass(this, MenuActivity.class);
+                break;
+            case R.id.qrcodeLongClick:
+                intent.setClass(this, QrCodeActivity.class);
+                break;
+            case R.id.skillView:
+                intent.setClass(this, SkillViewActivity.class);
+                break;
+            case R.id.floorView:
+                intent.setClass(this, FloorActivity.class);
                 break;
             default:
                 break;

@@ -1,5 +1,6 @@
-package com.example.huangwenpei.myview.Activity;
+package com.example.huangwenpei.myview.Activity.animater;
 
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
@@ -158,8 +159,31 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void translation() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(testBtn,"translationX",200);
+        //1常用
+        /*ObjectAnimator animator = ObjectAnimator.ofFloat(testBtn,"translationX",200);
         animator.setDuration(500);
-        animator.start();
+        animator.start();*/
+
+        //2同时改变多个属性值
+//        testBtn.animate().translationX(200).setDuration(500).translationY(200).start();
+
+        //3通过PropertyValuesHolder改变多个属性值
+        /*PropertyValuesHolder holder1 = PropertyValuesHolder.ofFloat("translationX",200);
+        PropertyValuesHolder holder2 = PropertyValuesHolder.ofFloat("translationY",200);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(testBtn, holder1, holder2);
+        animator.setDuration(500);
+        animator.start();*/
+
+        //4关键帧
+        Keyframe keyframe1 = Keyframe.ofFloat(0, 0);
+        Keyframe keyframe2 = Keyframe.ofFloat(0.5f, 400);
+        Keyframe keyframe3 = Keyframe.ofFloat(1f, 200);
+
+        PropertyValuesHolder valuesHolder = PropertyValuesHolder.ofKeyframe("translationX", keyframe1, keyframe2, keyframe3);
+
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(testBtn,valuesHolder);
+        objectAnimator.setDuration(2000);
+        objectAnimator.start();
     }
 }

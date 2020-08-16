@@ -1,14 +1,15 @@
 package com.example.huangwenpei.myview.Activity;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.huangwenpei.myview.R;
 
-public class HeadActivity extends BaseActivity {
+public class FloorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_head);
+        setContentView(R.layout.activity_floor);
     }
 }
