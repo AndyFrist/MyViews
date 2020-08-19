@@ -5,15 +5,23 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.huangwenpei.myview.R;
+import com.example.huangwenpei.myview.Util.AndroidUtil;
 import com.example.huangwenpei.myview.View.CircleView;
 import com.example.huangwenpei.myview.View.MusicView;
 import com.example.huangwenpei.myview.View.MusicView_handler;
@@ -32,6 +40,8 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
 
     private MusicView musicView;
     private MusicView_handler musicHas;
+    private ImageView head_imageview,playHandle;
+    private RelativeLayout musicContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +72,16 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         valueBtn.setOnClickListener(this);
         musicView.setOnClickListener(this);
         musicHas.setOnClickListener(this);
+
+        Resources res = getResources();
+        Bitmap bmp = BitmapFactory.decodeResource(res, R.drawable.parallax_img);
+        bmp = AndroidUtil.circleBitmap(bmp);
+        musicContent = findViewById(R.id.musicContent);
+        playHandle = findViewById(R.id.playHandle);
+        head_imageview = findViewById(R.id.head_imageview);
+        head_imageview.setImageBitmap(bmp);
+        head_imageview.setOnClickListener(this);
+        musicStat();
     }
 
     @Override
@@ -95,6 +115,9 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.musicHas:
                 musicHas.start();
+                break;
+            case R.id.head_imageview:
+                musicStat();
                 break;
         }
     }
@@ -200,5 +223,50 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(testBtn,valuesHolder);
         objectAnimator.setDuration(2000);
         objectAnimator.start();
+    }
+    ObjectAnimator objectAnimator;
+    int  running = 0;//0未开始 1正在播放 2已暂停
+    private void musicStat(){
+        if (objectAnimator == null) {
+            objectAnimator = ObjectAnimator.ofFloat(musicContent, "rotation", 360);
+        }
+        objectAnimator.setDuration(30 * 1000);
+        objectAnimator.setInterpolator(new LinearInterpolator());
+        objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        objectAnimator.setRepeatMode(ValueAnimator.INFINITE);
+
+        if (running == 0) {
+            running = 1;
+            objectAnimator.start();
+        }else if (running == 1){
+            objectAnimator.pause();
+            playhandle(-45);
+            running = 2;
+        } else if (running == 2) {
+            objectAnimator.resume();
+            playhandle(0);
+            running = 1;
+        }
+    }
+
+    ObjectAnimator animatorHandle;
+    private void playhandle(int value){
+        animatorHandle = ObjectAnimator.ofFloat(playHandle, "rotation", value);
+        animatorHandle.setInterpolator(new AccelerateDecelerateInterpolator());
+        playHandle.setPivotX(12 * getResources().getDimension(R.dimen.width_01));
+        playHandle.setPivotY(10 * getResources().getDimension(R.dimen.width_01));
+        animatorHandle.start();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (objectAnimator != null) {
+            objectAnimator.cancel();
+        }
+        if (animatorHandle != null) {
+            animatorHandle.cancel();
+        }
     }
 }
