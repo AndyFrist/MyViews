@@ -5,9 +5,11 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +27,8 @@ import com.example.huangwenpei.myview.Util.AndroidUtil;
 import com.example.huangwenpei.myview.View.CircleView;
 import com.example.huangwenpei.myview.View.MusicView;
 import com.example.huangwenpei.myview.View.MusicView_handler;
+
+import java.io.IOException;
 
 public class AnimaterActivity extends AppCompatActivity implements View.OnClickListener {
     private Button translationBtn ;
@@ -81,8 +85,21 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         head_imageview = findViewById(R.id.head_imageview);
         head_imageview.setImageBitmap(bmp);
         head_imageview.setOnClickListener(this);
+
+        AssetFileDescriptor fd = null;
+        try {
+            fd = getAssets().openFd("周杰伦-告白气球.mp3");
+            mMediaPlayer.setDataSource(fd);
+            mMediaPlayer.setLooping(true);
+            mMediaPlayer.prepare() ;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         musicStat();
+
     }
+
+    MediaPlayer mMediaPlayer = new MediaPlayer();
 
     @Override
     public void onClick(View v) {
@@ -238,12 +255,15 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         if (running == 0) {
             running = 1;
             objectAnimator.start();
+            mMediaPlayer.start();
         }else if (running == 1){
             objectAnimator.pause();
+            mMediaPlayer.pause();
             playhandle(-45);
             running = 2;
         } else if (running == 2) {
             objectAnimator.resume();
+            mMediaPlayer.start();
             playhandle(0);
             running = 1;
         }
@@ -267,6 +287,11 @@ public class AnimaterActivity extends AppCompatActivity implements View.OnClickL
         }
         if (animatorHandle != null) {
             animatorHandle.cancel();
+        }
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
         }
     }
 }

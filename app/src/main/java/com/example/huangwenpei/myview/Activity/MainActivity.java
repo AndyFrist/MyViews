@@ -18,7 +18,7 @@ import com.example.huangwenpei.myview.zxing.activity.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button sildemenu, chart, overscrollby, scrollview_pull, mswipebtn, qr_code, circle, circle_image, drag_gridview;
-    private Button viewDragHelper, search_recyclerview,baseAnimater,animater,gallery,menu,qrcodeLongClick,skillView,floorView;
+    private Button viewDragHelper, search_recyclerview,baseAnimater,animater,gallery,menu,qrcodeLongClick,skillView,floorView,commentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         skillView.setOnClickListener(this);
         floorView = findViewById(R.id.floorView);
         floorView.setOnClickListener(this);
+        commentView = findViewById(R.id.commentView);
+        commentView.setOnClickListener(this);
 
 
 
@@ -135,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.floorView:
                 intent.setClass(this, FloorActivity.class);
+                break;
+            case R.id.commentView:
+                intent.setClass(this, CommentActivity.class);
                 break;
             default:
                 break;

@@ -129,5 +129,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="下拉上二楼" />
+        <Button
+            android:id="@+id/commentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论" />
     </LinearLayout>
 </LinearLayout>
