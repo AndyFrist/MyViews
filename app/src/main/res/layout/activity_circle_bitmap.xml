@@ -13,6 +13,20 @@
         android:layout_width="200dp"
         android:layout_height="200dp" />
 
+    <com.example.huangwenpei.myview.View.StepView
+        android:id="@+id/stepView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:circleColor="@color/colorPrimary"
+        app:circleRadius="16dip"
+        app:count="5"
+        app:marginLeft="20dip"
+        app:signCount="8"
+        app:textColor="@color/white"
+        app:textSize="14sp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

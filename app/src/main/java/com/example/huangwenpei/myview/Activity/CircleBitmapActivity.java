@@ -22,6 +22,7 @@ import com.example.huangwenpei.myview.View.AutoProgress;
 import com.example.huangwenpei.myview.View.AutoProgressBar;
 import com.example.huangwenpei.myview.View.AutoProgressView;
 import com.example.huangwenpei.myview.View.ProgressBar;
+import com.example.huangwenpei.myview.View.StepView;
 
 public class CircleBitmapActivity extends BaseActivity {
 
@@ -32,7 +33,8 @@ public class CircleBitmapActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_bitmap);
         head_imageview = findViewById(R.id.head_imageview);
-
+        StepView stepView = findViewById(R.id.stepView);
+        stepView.setStep(3);
 
         Resources res = getResources();
         Bitmap bmp = BitmapFactory.decodeResource(res, R.drawable.parallax_img);
